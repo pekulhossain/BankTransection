@@ -3,21 +3,36 @@ document.getElementById('withdrawBtn').addEventListener('click',function(){
 
   const newWithdrawAmountString = withdrawField.value ;
   const newWithdrawAmount = parseFloat(newWithdrawAmountString);
+  
+  withdrawField.value = '';
+
+  if(isNaN(newWithdrawAmount)){
+    alert('Please enter valid number');
+    return;
+  }
  
   const withdrawTotalElement = document.getElementById('withdraw-total');
     const previousWithdrawTotalString = withdrawTotalElement.innerText;
     const previousWithdrawTotal = parseFloat(previousWithdrawTotalString);
 
-    const currentWithdrawTotal = previousWithdrawTotal + newWithdrawAmount;
-    withdrawTotalElement.innerText = currentWithdrawTotal;
+    
 
     const balanceTotalElement = document.getElementById('balance-total');
     const previousBalanceTotalString = balanceTotalElement.innerText;
     const previousBalanceTotal = parseFloat(previousBalanceTotalString);
-    console.log(previousBalanceTotal);
+  
+    
+
+    if(newWithdrawAmount > previousBalanceTotal){
+      alert( 'Amount not available');
+      return;
+    }
  
+    const currentWithdrawTotal = previousWithdrawTotal + newWithdrawAmount;
+    withdrawTotalElement.innerText = currentWithdrawTotal;
+
     const newBalanceTotal = previousBalanceTotal - newWithdrawAmount;
     balanceTotalElement.innerText = newBalanceTotal;
 
-    withdrawField.value = ' ';
+   
 })
