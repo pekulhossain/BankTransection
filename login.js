@@ -6,7 +6,7 @@ submitButton.addEventListener('click', function(){
     if(eMail === 'pekulhossain@gmail.com'){
         window.location.href = 'bank.html';
     } else {
-            alert('invalid User');
+            alert('Invalid User');
     }
 
     const passwordField = document.getElementById('user-password');
